@@ -15,9 +15,10 @@ function App() {
     complete:true
   }
   ]);
+  const addTodo=(newTodo) =>setTodo([newTodo, ...todo])
   return (
     <div className="App">
-      <Header/>
+      <Header addTodo={addTodo}/>
       <ToDoList todo={todo}/>
     </div>
   );

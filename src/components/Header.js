@@ -1,10 +1,11 @@
 import React from 'react';
 import ToDoForm from './ToDoForm';
 
-const Header = () => {
+const Header = (props) => {
   return (
     <header>
-      <ToDoForm/>
+      <h1>To Do List in React</h1>
+      <ToDoForm {...props}/>
     </header>
   )
 }
