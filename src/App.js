@@ -15,11 +15,24 @@ function App() {
     complete:true
   }
   ]);
-  const addTodo=(newTodo) =>setTodo([newTodo, ...todo])
+  const addTodo=(newTodo) => setTodo([newTodo, ...todo])
+  const completeTodo =(id) => {
+    const updatedToDos=todo.map((todos,index)=>{
+      if(todo===id){
+        return {
+          ...todos,
+          complete:todos.complete
+        }
+      }
+      return todos;
+    })
+  setTodo(updatedToDos);
+
+  }
   return (
     <div className="App">
       <Header addTodo={addTodo}/>
-      <ToDoList todo={todo}/>
+      <ToDoList todo={todo} completeTodo = {completeTodo}/>
     </div>
   );
 }
