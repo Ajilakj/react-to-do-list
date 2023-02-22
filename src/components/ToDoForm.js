@@ -9,7 +9,9 @@ const ToDoForm = ({addTodo}) => {
   });
   const submitHandler=(e)=>{
     e.preventDefault();
-    addTodo(newTodo);
+    if(newTodo.text){ // not empty string
+      addTodo(newTodo);
+    }
   }
   return (
     <form>

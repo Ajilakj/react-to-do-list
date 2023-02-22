@@ -6,7 +6,7 @@ import ToDoList from './components/ToDoList';
 import React from 'react';
 
 function App() {
-  const [todo, setTodo]=useState([{
+  const [todos, setTodos] = useState([{
     text:"Buy milk",
     complete:false
   },
@@ -15,24 +15,31 @@ function App() {
     complete:true
   }
   ]);
-  const addTodo=(newTodo) => setTodo([newTodo, ...todo])
+
+  const addTodo=(newTodo) => setTodos([newTodo, ...todos])
+
   const completeTodo =(id) => {
-    const updatedToDos=todo.map((todos,index)=>{
-      if(todo===id){
+    const updatedToDos=todos.map((todo,index) => {
+      if(index===id){
         return {
           ...todos,
-          complete:todos.complete
+          complete:todo.complete
         }
       }
       return todos;
     })
-  setTodo(updatedToDos);
-
+    setTodos(updatedToDos);
   }
+
+  const deleteToDo = (id) =>{
+    const updatedTodos = todos.filter((todo, index) => index!==id);
+    setTodos(updatedTodos);
+  }
+
   return (
     <div className="App">
       <Header addTodo={addTodo}/>
-      <ToDoList todo={todo} completeTodo = {completeTodo}/>
+      <ToDoList todos={todos} completeTodo = {completeTodo} deleteToDo = {deleteToDo}/>
     </div>
   );
 }
